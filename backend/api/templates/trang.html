@@ -1,0 +1,51 @@
+{%extends 'base.html' %}
+{% block content%}
+{% load static%}
+<link rel='stylesheet' type="text/css" href='{% static 'images/3.png'}'>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        margin-left:5px;
+        margin-right:5px;
+        max-width:1900px;
+        background-color:#fcfaee;
+        padding: 20px;
+        min-height:1000px;
+    }
+    h2{
+        font-family:Montserat;
+    }
+</style> 
+<div class='container'>
+    <h1 style="text-align:center;font-bold:4px;">CHÀO MỪNG "{{user.username}}" ĐẾN VỚI VIETEXPERIENCE</h1><br>
+    <img style="width:1900px;height:550px;" src="{% static 'images/img.png' %}" alt="Logo">
+    <br>
+    <h2>TẦM NHÌN</h2>
+
+    <p>Trong tương lai, chúng tôi mong muốn trở thành một cộng đồng online sôi động, 
+    nơi mọi người có thể tự do chia sẻ, học hỏi và cùng nhau phát triển. 
+    Chúng tôi sẽ là nguồn cảm hứng bất tận cho những ai đang tìm kiếm kiến thức mới, 
+    những trải nghiệm thú vị và những mối quan hệ ý nghĩa.</p>
+    
+    <h2>SỨ MỆNH</h2>
+    
+    <p>Sứ mệnh của chúng tôi là kết nối những tâm hồn đồng điệu, tạo ra một không gian 
+    an toàn và thân thiện để mọi người có thể thể hiện bản thân và chia sẻ những suy
+    nghĩ, cảm xúc của mình. Chúng tôi cam kết cung cấp những thông tin hữu ích, chất
+    lượng và cập nhật nhất, đồng thời tạo ra những trải nghiệm độc đáo và đáng nhớ 
+    cho độc giả.</p>
+    <h2>GIÁ TRỊ</h2>
+    <p>Một trang weblog mang đến nhiều giá trị to lớn. Đối với cá nhân, nó là nơi thể 
+        hiện bản thân, phát triển kỹ năng và mở rộng mối quan hệ. Đối với doanh nghiệp,
+         blog giúp xây dựng thương hiệu, tăng cường SEO và thu hút khách hàng. Còn đối 
+         với xã hội, blog đóng góp vào việc chia sẻ kiến thức và tạo ra những cuộc thảo 
+         luận. Tóm lại, blog là một công cụ đa năng, giúp kết nối mọi người, truyền bá 
+         thông tin và tạo ra những giá trị tích cực.</p>
+    
+
+</div>
+{% endblock%}

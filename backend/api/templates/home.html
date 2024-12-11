@@ -1,0 +1,103 @@
+
+{%extends "base.html"%}
+{%block content%}
+<style type="text/css">
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+    }
+    
+    h2 {
+        color: #FFA500; 
+        text-align: left;
+        margin: 20px 0;
+    }
+    
+    #trending-posts, #categories, #popular-posts {
+        width: 80%;
+        margin: auto;
+    }
+    
+    .post-grid, .category-grid, .popular-posts-grid {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto; 
+    }
+    
+    .post-card, .category-card {
+        width: 200px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .post-card img, .category-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+    }
+    
+    .post-card h3, .category-card p {
+        margin: 10px;
+    }
+    
+
+    .pagination {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .pagination a {
+        margin: 0 5px;
+        text-decoration: none;
+        color: #FFA500; 
+    }
+    
+    .pagination a:hover {
+        color: #333;
+    }
+</style>
+<section id="trending-posts">
+    <h2>Bài Viết Thịnh Hành</h2>
+    <div class="post-grid">
+        {% for post in trending_posts %}
+            <div class="post-card">
+                <h3>{{ post.title }}</h3>
+                <p>Lượt đọc, like... Thông tin cơ bản</p>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="pagination">
+        {% for page_num in page_range %}
+            <a href="?page={{ page_num }}">{{ page_num }}</a>
+        {% endfor %}
+    </div>
+</section>
+<section id="categories">
+    <h2>Thể Loại</h2>
+    <div class="category-grid">
+        {% for category in categories %}
+            <div class="category-card">
+            
+                <p>{{ category.title }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+<section id="popular-posts">
+    <h2>Bài Viết Phổ Biến</h2> 
+    <div class="popular-posts-grid">
+        {% for post in popular_posts %} 
+            <div class="post-card">
+                <h3>{{ post.title }}</h3>
+                <p>Lượt đọc, like... Thông tin cơ bản</p> 
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+
+{%endblock%}

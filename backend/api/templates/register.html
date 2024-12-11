@@ -1,0 +1,51 @@
+{%extends 'base.html' %}
+{%block content%}
+    <style >
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        form {
+            border:3px black solid;
+            background-color:#fcfaee;
+            width: 445px;
+            margin-top:60px;
+            padding:10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+    </style>
+    <h1 STYLE="text-align:center;color:black;font-weight:bold;margin-top:40px"> ĐĂNG KÝ</h1>
+    <p STYLE="text-align:center;color:black">Đăng kí tài khoản </p>
+    <form method="POST" >
+        {% csrf_token %}
+        {{ form.as_p }}          
+        <button style="width:420px;background:black"type="submit">Register</button>
+    </form>
+{%endblock%}

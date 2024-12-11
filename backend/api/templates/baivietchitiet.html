@@ -1,0 +1,30 @@
+<div>
+    <h3>Bình luận</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Gửi</button>
+    </form>
+</div>
+
+<div>
+    <h4>Danh sách bình luận:</h4>
+    {% for comment in comments %}
+        <div style="margin-left: {{ comment.parent_id|default:"0"|length }}0px;">
+            <strong>{{ comment.name }}</strong>
+            <p>{{ comment.comment }}</p>
+            <form method="POST" style="margin-top: 10px;">
+                {% csrf_token %}
+                <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-link">Trả lời</button>
+            </form>
+        </div>
+        {% for reply in comment.replies.all %}
+            <div style="margin-left: 40px;">
+                <strong>{{ reply.name }}</strong>
+                <p>{{ reply.comment }}</p>
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>

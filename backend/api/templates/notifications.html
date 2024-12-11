@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0; 
+    }
+    .container{
+        border:1px solid #ccc;
+        min-height:880px;
+        height:auto;
+        background-color:#F3F3E0;
+        }
+    h2{
+        boder:1px #ccc solid;
+        border-radius:0px;
+        text-align:center;
+        box-shadow: 0 5px 8px rgba(0,0,0,2);
+        width:410px;
+        margin:auto;
+        margin-top:10px;
+        background-color:white;
+        padding:5px;
+        height:50px;
+    }
+    form {
+        margin-left:20px;
+        
+    }
+    .btn{
+        border:2px solid black;
+        border-radius:5px;
+        margin:auto;    }
+    .ct{
+        margin:auto;
+        gap:20px;
+        text-align:center;
+        margin-top:150px;
+    }
+    .button {
+        width: 200px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        margin-left:450px;
+        margin-top:10px;
+        padding: 0px 15px;
+        background-color:rgb(193, 163, 98);
+        border-radius: 10px;
+        color: white;
+        border: none;
+        position: relative;
+        cursor: pointer;
+        transition-duration: .2s;
+      }
+      
+      .bell {
+        width: 13px;
+      }
+      
+      .bell path {
+        fill: rgb(0, 206, 62);
+      }
+      
+      .arrow {
+        position: absolute;
+        right: 0;
+        width: 30px;
+        height: 100%;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+    
+</style>
+<div class='container'>
+    <button class="button">
+   <svg class="bell" viewBox="0 0 448 512"><path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"></path></svg>
+  Thông báo
+  <div class="arrow">›</div><br>
+</button>
+        <ul>
+            {% for notification in notifications %}
+                <li style='gap:100px'>
+                    {% if notification.type == "Like" %}
+                        <strong><a href='{% url 'user_profile' notification.initiator.id %}'>{{ notification.initiator.username }}</a></strong> đã thích bài viết :
+                        <strong><a href='{%url 'post_detail' notification.post.id%}'>{{ notification.post.title }}</a></strong>.
+                    {% elif notification.type == "Comment" %}
+                        <strong><a href='{% url 'user_profile' notification.initiator.id %}'>{{ notification.initiator.username }}</a></strong> đã bình luận vào bài viết :
+                        <strong><a href='{%url 'post_detail' notification.post.id%}'>{{ notification.post.title }}</a></strong>.
+                    {% elif notification.type == "Bookmark" %}
+                        <strong><a href='{% url 'user_profile' notification.initiator.id %}'>{{ notification.initiator.username }}</a></strong> đã lưu bài viết : 
+                        <strong><a href='{%url 'post_detail' notification.post.id%}'>{{ notification.post.title }}</a></strong>.
+                    {% elif notification.type == "Reply" %}
+                        <strong><a href='{% url 'user_profile' notification.initiator.id %}'>{{ notification.initiator.username }}</a></strong> đã trả lời bình luận của bạn : 
+                        <strong><a href='{%url 'post_detail' notification.post.id%}'>{{ notification.post.title }}</a></strong>.
+                    {% elif notification.type == "Follow" %}
+                        <strong><a href='{% url 'user_profile' notification.initiator.id %}'>{{ notification.initiator.username }}</a></strong> đã theo dõi bạn : 
+                        <strong><a href='{%url 'post_detail' notification.post.id%}'>{{ notification.post.title }}</a></strong>.
+              
+                    {% endif %}
+                    <small>{{ notification.date }}</small>
+                </li>
+            {% empty %}
+                <p>Không có thông báo nào.</p>
+            {% endfor %}
+        </ul>
+</div>
+{%endblock%}

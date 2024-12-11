@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% block content %}
+
+<style>
+
+    body{
+        margin:0;
+    }
+    .container{
+        {% comment %} background: linear-gradient(to top, #f9d8d8, #cfefff); {% endcomment %}
+        background-color:#F3F3E0;
+        border:1px #ccc solid;
+        margin-top:0;
+        padding:10px;
+        min-height:880px;
+    }
+    h2{
+        boder:1px #ccc solid;
+        border-radius:10px;
+        box-shadow: 0 5px 8px rgba(0,0,0,2);
+        width:280px;
+        margin:auto;
+        padding:4px;
+        font-family:Montserat;
+        background-color:white;
+        text-align:center;
+        margin-top:5px;
+        height:50px;
+    }
+    img.rounded-circle {
+        display: block;
+        margin: 10px auto;
+        border: 2px solid #ccc;
+        width:230px;    
+        height:230px;
+    }
+    .ct{
+        margin:auto;
+        text-align:center;
+        
+    }
+    .frame{
+        margin-left:100px;
+        margin-top:10px;
+        height:auto;
+        margin-right:30px;
+        background-color:white;
+    }
+</style>
+<h2> Đang theo dõi</h2>
+{% for follower in following %}
+    <div class='frame'>
+        <li><a href="{% url 'user_profile' follower.id %}">{{ follower.user.username }}</a> Time:{{ follower.date|date:"d M Y, H:i" }}</li>
+    </div>
+{% endfor %}
+
+{%endblock%}

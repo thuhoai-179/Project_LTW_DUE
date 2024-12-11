@@ -1,0 +1,110 @@
+{%extends 'base.html'%}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{%block content%}
+ <style>
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin:0;
+    }
+    
+    .container {
+        min-height:1000px;
+        margin: 0 auto;
+        padding: 50px;
+        background:#F3F3E0;
+        height:800px;
+    }
+    
+    h1 {
+        font-family: 'Montserrat';
+        font-size: 36px;
+        text-align: center;
+        color: #333;
+    }
+    
+    .team {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .member {
+        text-align: center;
+    }
+    h1{
+        color:black;
+        text-align:left;
+        font-size:30px;
+    }
+
+    .grid-container{
+        grid-template-columns: repeat(3, 1fr); 
+        grid-template-rows: repeat(2, 1fr); 
+        grid-gap: 20px;
+        display:wrap;
+        margin-left:110px;
+        margin-top:10px;
+        padding: 20px;
+        width:100%;
+        height:250px;
+        text-align: center;
+    }
+
+    .grid-item{
+        background-color: #ffffe6; 
+        padding-cloumn: 15px;
+        width:200px;
+        height:200px;
+        margin-left:-120px;
+        border:1px orange solid;  
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align:left;
+        "
+    } 
+
+ </style>
+ <body>
+    <div class="container">
+        <h1 style="text-align:left">CÂU CHUYỆN THƯƠNG HIỆU</h1>
+        <p style="padding:10px">Câu chuyện thương hiệu của Vietexperient không chỉ là những bài viết,
+             mà còn là một hành trình. Đó là câu chuyện về niềm đam mê, 
+             sự sáng tạo và những giá trị mà người viết muốn chia sẻ. Câu chuyện
+              này giúp tạo nên sự khác biệt, gắn kết cộng đồng và định hướng nội 
+              dung cho trang web. Xây dựng câu chuyện thương hiệu là cách để biến
+               trang web của bạn trở nên đặc biệt và đáng nhớ.
+        </p>
+        <h1>SỨ MỆNH CỦA TRANG</h1>
+        <p>Sứ mệnh thương hiệu của Vietexperient là lời hứa về giá trị mà trang web mang đến cho độc giả. 
+            Nó không chỉ là nơi cung cấp thông tin mà còn là cầu nối để tạo ra một cộng đồng gắn kết, 
+            truyền cảm hứng và hỗ trợ lẫn nhau. Một sứ mệnh thương hiệu tốt cần rõ ràng, độc đáo,
+             và định hướng cho mọi hoạt động của trang web, giúp xây dựng một thương hiệu bền vững
+              và đáng tin cậy trong lòng độc giả.</p>
+        <h1>NHỮNG NHÀ SÁNG LẬP</h1>
+
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3 style="text-align:center;box-shadow: 0 4px 6px rgba(0, 0, 0, 2); "><a href="">Văn Sang</a></h3>
+                <img style="width:170px;height:140px;border-radius:8px" src="{% static 'images/2.png' %}" alt="Logo">
+            </div>
+            <div class="grid-item">
+                <h3 style="text-align:center;box-shadow: 0 4px 6px rgba(0, 0, 0, 2); "><a href=" ">Thu Hoài</a></h3>
+                <img style="width:170px;height:140px;border-radius:8px" src="{% static 'images/hoai.png' %}" alt="Logo">
+            </div>
+            <div class="grid-item">
+                <h3 style="text-align:center;box-shadow: 0 4px 6px rgba(0, 0, 0, 2); "><a href=" ">H.Giang</a></h3>
+                <img style="width:170px;height:140px;border-radius:8px" src="{% static 'images/giang.png' %}" alt="Logo">
+            </div>
+            <div class="grid-item">
+                <h3 style="text-align:center;box-shadow: 0 4px 6px rgba(0, 0, 0, 2); "><a href=" ">Tường Vy</a></h3>
+                <img style="width:170px;height:140px;border-radius:8px" src="{% static 'images/vy.png' %}" alt="Logo">
+            </div>
+            <div class="grid-item">
+                <h3 style="text-align:center;box-shadow: 0 4px 6px rgba(0, 0, 0, 2); "><a href=" ">H.Ngọc</a></h3>
+                <img style="width:170px;height:140px;border-radius:8px" src="{% static 'images/ngoc.png' %}" alt="Logo">
+            </div>
+        </div>
+        
+</body>
+
+{%endblock%}

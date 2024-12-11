@@ -1,0 +1,377 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+.container {
+    border: 2px solid #ccc;
+    min-height: 880px;
+    height: auto;
+    background: linear-gradient(to top, #f9d8d8, #cfefff);
+
+    padding: 20px;
+}
+h2 {
+    color:black;
+    border:1px black solid;
+    background-color:white;
+    text-align:center;
+}
+.custome {
+    width: 100%;
+    min-width: 1100px;
+    min-height: 300px;
+    border: 1px black solid;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.cus {
+    border: 2px solid black;
+    border-radius: 5px;
+    background: linear-gradient(to top, #f9d8d8, #cfefff);
+    padding: 8px 16px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 5px;
+    display: inline-flex;
+    align-items: center;
+}
+.demo {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+.notification {
+    color: green;
+    margin: 10px 0;
+}
+.warning {
+    color: red;
+    margin: 10px 0;
+}
+button:focus {
+    outline: none;
+}
+.post-info span {
+    display: inline-block;
+    margin-right: 20px;
+
+}
+.custom{
+    margin:auto;
+    text-align:center;
+    color:black;
+  }
+
+img.rounded-circle {
+    display:inline-block;
+    text-align:left;
+    border: 1px solid black;
+    background-color:white;
+    width:150px;
+    height:150px;
+}
+.ct{
+    display:inline;
+    white-space:nowarp;
+}
+h3{
+    border:1px black solid;
+    padding:3px;
+    width:180px;
+    background-color:silver;
+}
+.toolbar {
+    display: flex;
+    gap: 10px;
+    background-color:white;
+  }
+  .toolbar i{
+    border:1px black solid;
+    padding:5px;
+}
+.golden-button {
+    touch-action: manipulation;
+    display: inline-block;
+    outline: none;
+    font-family: inherit;
+    font-size: 1em;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 0.3em;
+    height: 2.75em;
+    line-height: 2.5em;
+    text-transform: uppercase;
+    padding: 0 1em;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(110, 80, 20, 0.4),
+      inset 0 -2px 5px 1px rgba(139, 66, 8, 1),
+      inset 0 -1px 1px 3px rgba(250, 227, 133, 1);
+    background-image: linear-gradient(
+      160deg,
+      #a54e07,
+      #b47e11,
+      #fef1a2,
+      #bc881b,
+      #a54e07
+    );
+    border: 1px solid #a55d07;
+    color: rgb(120, 50, 5);
+    text-shadow: 0 2px 2px rgba(250, 227, 133, 1);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    background-size: 100% 100%;
+    background-position: center;
+  }
+
+  .golden-button:focus,
+  .golden-button:hover {
+    background-size: 150% 150%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23),
+      inset 0 -2px 5px 1px #b17d10, inset 0 -1px 1px 3px rgba(250, 227, 133, 1);
+    border: 1px solid rgba(165, 93, 7, 0.6);
+    color: rgba(120, 50, 5, 0.8);
+
+  }
+
+  .golden-button:active {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(110, 80, 20, 0.4),
+      inset 0 -2px 5px 1px #b17d10, inset 0 -1px 1px 3px rgba(250, 227, 133, 1);
+  }
+
+  .golden-button span{
+    gap:2px;
+  }
+  .button {
+    cursor: pointer;
+    position: relative;
+    display:inline-block;
+    font-size: 18px;
+    color: rgb(193, 163, 98);
+    border: 2px solid rgb(193, 163, 98);
+    border-radius: 34px;
+    background-color: transparent;
+    font-weight: 600;
+    height:45px;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+    overflow: hidden;
+  }
+
+  .button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    border-radius: inherit;
+    scale: 0;
+    z-index: -1;
+    background-color: rgb(193, 163, 98);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+
+  .button:hover::before {
+    scale: 3;
+  }
+
+  .button:hover {
+    color: #212121;
+    scale: 1.1;
+    box-shadow: 0 0px 20px rgba(193, 163, 98,0.4);
+  }
+
+  .button:active {
+    scale: 1;
+  }
+  .reply {
+       margin-left: 30px; /* Điều chỉnh khoảng cách thụt vào ở đây */
+  }
+    .reply-form {
+        margin-top: 10px;
+        padding: 10px;
+        background: #f5f5f5;
+        border-radius: 8px;
+        margin-left: 30px;
+    }
+    .reply-form textarea {
+        width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 8px;
+    }
+    .reply-form button {
+        margin-top: 10px;
+    }
+    hr {
+        border: none;
+        border-top: 1px solid #ddd;
+        margin: 15px 0;
+    }
+
+
+</style>
+
+<div class='container'>
+    {% comment %} <div class='demo'>
+        <button type='submit' class='cus'>
+            <a href="{% url 'edit_post' post.id %}" style="text-decoration: none; color: black;">Chỉnh sửa</a>
+        </button>
+    </div> {% endcomment %}
+
+    <h2>{{ post.title }}</h2>
+    <div class='custome'>
+        <p><strong> Nội Dung: </strong>{{ post.description }}
+            <div class='toolbar' style='margin-top:200px;gap:10px'>
+                <i class="fas fa-bold"></i>
+                <i class="fas fa-paperclip"></i>
+                <i class="fas fa-link"></i>
+                <i class="fas fa-smile"></i>
+                <i class="fas fa-exclamation-triangle"></i>
+                <i class="fas fa-image"></i>
+            </div>
+        </p>
+    </div>
+
+        <div class="post-info">
+
+                <span><form action="{% url 'like_post' post.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" name="like_action">
+                        {% if request.user in post.likes.all %}
+                            <i class="fas fa-thumbs-down" style="margin-right: 8px;"></i> Unike
+                        {% else %}
+                            <i class="fas fa-thumbs-up" style="margin-right: 8px;"></i> Like
+                        {% endif %}
+                    </button>
+
+                </form></span>
+                <span><form method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" name="bookmark">
+                        {% if is_bookmarked %}
+                            <i class="fa fa-bookmark"></i> Đã lưu
+                        {% else %}
+                            <i class="fa fa-bookmark-o"></i> Lưu bài viết
+                        {% endif %}
+                    </button>
+                </form></span>
+            <span style='margin-left:50px'><i class="fas fa-thumbs-up" style="margin-right: 8px;"></i>{{post.likes.count}}</span>
+            <span><i class="fa fa-bookmark"></i> {{ bookmarks_count }}</span>
+            <span><i class="fas fa-eye"></i> {{ post.view }}</span>
+
+            <br>
+            <span><form method="POST" enctype="multipart/form-data" class="mt-4">
+                {% csrf_token %}
+                    <div class='ct' >
+                        {% if profile.image %}
+                            <img src="{{ profile.image.url }}" class='rounded-circle' style=" object-fit: cover;box-shadow: 0 5px 35px rgba(280, 163, 98,0.4)">
+                        {% endif %}
+
+                            <button role="button" class="golden-button" >
+                                <span class="golden-text"><a href='{% url 'user_profile' profile.id %}' style='color:#212121;'>tác giả:{{profile.user.username}}</a></span>
+                                <br><button class="button" style='margin-left:20px'><a href='{% url 'user_profile' profile.id %}' style='color:#212121;'>
+                                    follow</a>
+
+                                    </button>
+                                </button><br>
+
+                                <h10 style='font-size:10px'>người theo dõi:<span style='font-size:15px;color:black'>3</span></h10>
+                                <h10 style='font-size:10px'>Đang theo dõi:<span style='font-size:15px;color:black'>5</span></h10>
+
+
+
+                    </div>
+                    {{ form.image }}
+            </form></span>
+        </div>
+        <br>
+
+    <!-- Thông báo -->
+    {% comment %} {% if messages %}
+        <div>
+            {% for message in messages %}
+                <div class="{% if message.tags %}{{ message.tags }}{% endif %} notification">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+  {% endcomment %}
+    <h3>Bình luận:({{ total_comments }})</h3>
+
+    <div>
+        {% for comment in comments %}
+        <div>
+            <strong>{{ comment.user.username }}</strong>: {{ comment.comment }}
+            <small>{{ comment.date|date:"d M Y, H:i" }}</small>
+
+            <!-- Luôn hiển thị nút Reply cho tất cả bình luận -->
+            <a href="#" onclick="toggleReplyForm({{ comment.id }}); return false;">Reply</a>
+            <a href="{% url 'delete_comment' comment.id %}" onclick="return confirm('Bạn có chắc muốn xóa bình luận này?');" class="btn btn-danger btn-sm">Delete</a>
+            <!-- Hiển thị các phản hồi -->
+            {% for reply in comment.replies.all %}
+            <div class="ml-4">
+                <strong>{{ reply.user.username }}</strong>: {{ reply.comment }}
+                <small>{{ reply.date|date:"d M Y, H:i" }}</small>
+
+                <!-- Luôn hiển thị nút Reply cho các phản hồi -->
+                <a href="#" onclick="toggleReplyForm({{ reply.id }}); return false;">Reply</a>
+                <a href="{% url 'delete_comment' reply.id %}" onclick="return confirm('Bạn có chắc muốn xóa phản hồi này?');" class="btn btn-danger btn-sm">Delete</a>
+                <div class="ml-4">
+                    {% for reply_of_reply in reply.replies.all %}
+                    <div>
+                        <strong>{{ reply_of_reply.user.username }}</strong>: {{ reply_of_reply.comment }}
+                        <small>{{ reply_of_reply.date|date:"d M Y, H:i" }}</small>
+                        <a href="{% url 'delete_comment' reply_of_reply.id %}" onclick="return confirm('Bạn có chắc muốn xóa phản hồi này?');" class="btn btn-danger btn-sm">Delete</a>
+                        <!-- Hiển thị nút Reply cho phản hồi của phản hồi -->
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Form trả lời cho phản hồi -->
+            <form method="POST" action="{% url 'post_detail' id=post.id %}" class="reply-form d-none"
+                  id="reply-form-{{ reply.id }}">
+                {% csrf_token %}
+                {{ form.comment }}
+                <input type="hidden" name="reply_id" value="{{ reply.id }}">
+                <button class="btn btn-sm btn-primary" type="submit">Reply</button>
+            </form>
+
+            {% endfor %}
+
+            <!-- Form trả lời cho bình luận gốc -->
+            <form method="POST" action="{% url 'post_detail' id=post.id %}" class="reply-form d-none"
+                  id="reply-form-{{ comment.id }}">
+                {% csrf_token %}
+                {{ form.comment }}
+                <input type="hidden" name="reply_id" value="{{ comment.id }}">
+                <button class="btn btn-sm btn-primary" type="submit">Reply</button>
+            </form>
+
+        </div>
+        <hr>
+        {% endfor %}
+    </div>
+
+    <!-- Form bình luận chính -->
+    <form method="POST" class="mt-3">
+        {% csrf_token %}
+        {{ form.comment }}
+        <button class="btn btn-primary btn-sm" type="submit">Post Comment</button>
+    </form>
+        <script>
+            function toggleReplyForm(commentId) {
+                const form = document.getElementById(`reply-form-${commentId}`);
+                form.classList.toggle('d-none');
+            }
+        </script>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+<header>
+    <div style="background-color:#051d6b; height:50px;width:auto" class="header-container">
+        <div class="logo">           
+            <img style="width:100px;height:53px" src="{% static 'images/logo-weblog.png' %}" alt="Logo">
+        </div>
+        <nav>             
+            <ul class="nav-links">
+                <li><a href="{% url 'trang_chu' %}" style='content: attr(data-icon)'><i class="bi bi-house">Trang Chủ</i></a></li>
+                <li class="dropdown">
+                  <a href="{%url 'trang' %}" class="dropdown-toggle">Trang</a>
+                  <div class="dropdown-menu">
+                      <a href="{% url 'vechungtoi'%}">Về chúng tôi</a>
+                      <a href="{% url 'lienhe'%}">Liên hệ</a>
+                  </div>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle">Bảng ĐK</a>
+                  <div class="dropdown-menu">
+                      <a href="{% url 'baiviet' %}">Bài viết</a>
+                      <a href="{% url 'add_post' %}">Thêm bài đăng</a>
+                      <a href="#">Bình luận</a>
+                      <a href="{% url 'thongbao'%}">Thông báo</a>
+                      <a href="{% url 'profile' %}"> Hồ sơ</a>
+                  </div>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle">Danh Mục</a>
+                  <div class="dropdown-menu">
+                    <a href="{% url "danhmuc" %}">Xem danh mục</a>
+                    <a href="{% url 'category_create'%}">Thêm danh mục</a>
+                  </div>
+                </li>     
+                <li class="dropdown">
+                  <a href="{% url 'test_code' %}">test code</a>
+
+                </li>           
+                <button type='submit' style='margin:auto;border:1px black solid;border-radius:8px;background-color:rgb(183, 115, 6);'>
+                    {% if user.is_authenticated %}
+                      <a href="{% url 'logout' %}" style='color:white'>Đăng xuất</a>
+                    {% else %}
+                        <a href="{% url 'login' %}">Đăng nhập</a>
+                    {% endif %}             
+            </ul>
+        </nav>
+        <div class="search-bar" style="color:white">
+          <form method="get" action="{% url 'search_posts' %}">
+            <input type="text" name="q" style="height:30px;background-color:white;border:1px black solid;border-radius:8px"
+             placeholder="Nhập từ khóa.........." value="{{ query|default:'' }}">
+            <button type="submit" style="height:30px;background-color:rgb(183, 115, 6);border:1px black solid;border-radius:8px;color:white">Tìm kiếm</button>
+          </form> 
+        </div>
+    </div>
+</header>

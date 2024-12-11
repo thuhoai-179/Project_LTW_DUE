@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% block content %}
+<style>
+
+    body{
+        margin:0;
+    }
+    .container{
+        {% comment %} background: linear-gradient(to top, #f9d8d8, #cfefff); {% endcomment %}
+        background-color:#F3F3E0;
+        border:1px #ccc solid;
+        margin-top:0;
+        padding:10px;
+        min-height:880px;
+    }
+    h2{
+        boder:1px #ccc solid;
+        border-radius:0px;
+        box-shadow: 0 5px 8px rgba(0,0,0,2);
+        width:410px;
+        margin:auto;
+        background-color:white;
+        padding:10px;
+        height:50px;
+    }
+    img.rounded-circle {
+        display: block;
+        margin: 10px auto;
+        border: 2px solid #ccc;
+        width:230px;    
+        height:230px;
+    }
+    .ct{
+        margin:auto;
+        text-align:center;
+        
+    }
+</style>
+<div class="container">
+    <h2 class="text-center" >Hồ Sơ Cá Nhân</h2>
+    <p class="text-center" style="margin-top:20px">Bạn có toàn quyền quản lý cài đặt tài khoản của riêng bạn</p>
+
+    <form method="POST" enctype="multipart/form-data" class="mt-4">
+        {% csrf_token %}
+        <div class="form-group text-center">
+            <label for="image">Avatar của bạn</label>
+            <div>
+                {% if profile.image %}
+                    <img src="{{ profile.image.url }}" class='rounded-circle' style=" object-fit: cover;">
+                {% endif %}
+            </div>
+            {{ form.image }}
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="full_name">Họ tên</label>
+            {{ form.full_name }}
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="bio">Về tôi</label>
+            {{ form.bio }}
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="facebook">Facebook</label>
+            {{ form.facebook }}
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="twitter">Twitter</label>
+            {{ form.twitter }}
+        </div>
+        <div class='ct'>
+            <button type="submit" class="btn btn-primary" style='background-color:orange;border:1px black solid;color:black'>Cập Nhật</button>
+            <button type="submit" class="btn btn-primary" style='background-color:silver;border:1px black solid'><a href='{% url 'myprofile'%}' style='color:black'>Hủy</button>
+            
+        </div>
+    </form>
+
+</div>
+{% endblock %}
