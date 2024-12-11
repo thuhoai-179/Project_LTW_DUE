@@ -272,4 +272,4 @@ EMAIL_HOST = 'smtp.gmail.com'  # Hoặc dịch vụ email bạn dùng
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'laptrinhweb24@gmail.com'  # Email của bạn
-EMAIL_HOST_PASSWORD = 'vo nhom ma lay pass'  # Mật khẩu email
+EMAIL_HOST_PASSWORD = 'ptue cdib kgwq ylhx'  # Mật khẩu email
