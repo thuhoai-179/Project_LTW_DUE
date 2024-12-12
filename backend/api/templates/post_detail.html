@@ -230,16 +230,7 @@ h3{
             {% endif %}
     </div>
     <div class='custome'>
-        <p><strong> Nội Dung: </strong>{{ post.description }}
-            <div class='toolbar' style='margin-top:200px;gap:10px'>
-                <i class="fas fa-bold"></i>
-                <i class="fas fa-paperclip"></i>
-                <i class="fas fa-link"></i>
-                <i class="fas fa-smile"></i>
-                <i class="fas fa-exclamation-triangle"></i>
-                <i class="fas fa-image"></i>
-            </div>
-        </p>
+        <p><strong> Nội Dung: </strong>{{ post.description|safe }}</p>
     </div>
 
         <div class="post-info">
@@ -278,8 +269,8 @@ h3{
                         {% endif %}
 
                             <button role="button" class="golden-button" >
-                                <span class="golden-text"><a href='{% url 'user_profile' profile.id %}' style='color:#212121;'>tác giả:{{profile.user.username}}</a></span>
-                                <br><button class="button" style='margin-left:20px'><a href='{% url 'user_profile' profile.id %}' style='color:#212121;'>
+                                <span class="golden-text"><a href= "{% url 'user_profile' profile.id %}" style='color:#212121;'>tác giả:{{profile.user.username}}</a></span>
+                                <br><button class="button" style='margin-left:20px'><a href="{% url 'user_profile' profile.id %}" style='color:#212121;'>
                                     follow</a>
 
                                     </button>

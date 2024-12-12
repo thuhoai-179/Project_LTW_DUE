@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from django.utils.html import mark_safe
 from django.utils.text import slugify
+from ckeditor_uploader.fields import RichTextUploadingField
 
 from shortuuid.django_fields import ShortUUIDField
 import shortuuid
@@ -100,7 +101,7 @@ class Post(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=100)
     image = models.FileField(upload_to="image", null=True, blank=True)
-    description = models.TextField(null=True, blank=True)
+    description = RichTextUploadingField(blank=True, null=True)
     tags = models.CharField(max_length=100)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='posts')
     status = models.CharField(max_length=100, choices=STATUS, default="Active")

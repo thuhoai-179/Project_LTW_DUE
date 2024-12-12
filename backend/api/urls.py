@@ -20,8 +20,7 @@ urlpatterns = [
     path('my-posts/', api_views.user_posts, name='user_posts'),
     path('edit_post/<int:id>/', api_views.edit_post, name="edit_post"),
     path('post/<int:pk>/delete/', api_views.post_delete, name='post_delete'),
-    path('profile/<int:id>/', api_views.user_profile, name='user_profile'),   
-    
+    path('profile/<int:id>/', api_views.user_profile, name='user_profile'),
     path('profile/',api_views.profile,name='profile'),
     path('category/<int:id>/', api_views.category_post_list, name='category_post_list'),
     path('categories/create/',api_views.category_create, name='category_create'),

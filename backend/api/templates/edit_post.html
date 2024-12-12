@@ -39,13 +39,14 @@
         margin:auto;
         text-align:center;
         margin-top:170px;
-    } 
+    }
 </style>
 <div class='container'>
     <h2>SỬA BÀI VIẾT</h2><br>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }} 
+        {{ form.media }}
+        {{ form.as_p }}
         <div class='ct'>
             <button type="submit" class="btn btn-success">save</a></button>
             <a href="{% url 'baiviet' %}" class="btn btn-secondary">Cancel</a>

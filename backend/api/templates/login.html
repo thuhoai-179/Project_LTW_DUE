@@ -45,13 +45,12 @@
     </style>
 <div style="text-align:center;margin-top:120px">
         <h1 style="color:black;font-weight:bold"> ĐĂNG NHẬP </h1>
-        <p>Bạn đã có tài khoản? <span class="text-info"><a href="{% url 'register'%}">Đăng kí</a></span> </p>
+        <p>Bạn chưa có tài khoản? <span class="text-info"><a href="{% url 'register'%}">Đăng kí</a></span> </p>
 </div>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <span><a href="{% url 'password_reset' %}">Forgot</a></span>/
-        <span><a href="{% url 'change_password' %}">Change Password</a></span>
+        <span><a href="{% url 'password_reset' %}">Forgot Password</a></span>
         <button style="width:435px ;background:black" type="submit">Login</button>
     </form>
 </body>

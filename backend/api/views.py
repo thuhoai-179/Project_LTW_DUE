@@ -319,39 +319,45 @@ def follow_user(request, id):
         profile.followers.remove(request.user.profile) 
     else:
         profile.followers.add(request.user.profile)  
-    return redirect('user_profile', id=id)  
+    return redirect('user_profile', id=id)
 
-            
-def user_profile(request,id):
+
+def user_profile(request, id):
     profile = get_object_or_404(Profile, id=id)
     user_posts = Post.objects.filter(user=profile.user).order_by('-date')
     followers = profile.followers.all()
     following = profile.following.all()
-    is_following = request.user.profile in profile.followers.all() if request.user.is_authenticated else False 
-    if request.method == 'POST':
-        if 'follow' in request.POST:          
-            if is_following:
-                profile.followers.remove(request.user.profile)
-                is_following = False
-            else:
-                profile.followers.add(request.user.profile)
-                is_following = True
+    is_following = request.user.profile in profile.followers.all() if request.user.is_authenticated else False
 
-                # if profile.user != request.user:
-                #     Notification.objects.create(
-                #         user=profile.user,  # Người nhận thông báo (người được follow)
-                #         type="Follow",
-                #         initiator=request.user  # Người thực hiện follow
-                #     )
+    if request.method == 'POST':
+        if 'follow' in request.POST:
+            # Kiểm tra xem người dùng có phải đang tự follow chính mình hay không
+            if profile.user != request.user:
+                if is_following:
+                    profile.followers.remove(request.user.profile)
+                    is_following = False
+                else:
+                    profile.followers.add(request.user.profile)
+                    is_following = True
+
+                    # Nếu muốn tạo thông báo, có thể bật lại đoạn code dưới đây
+                    # if profile.user != request.user:
+                    #     Notification.objects.create(
+                    #         user=profile.user,  # Người nhận thông báo (người được follow)
+                    #         type="Follow",
+                    #         initiator=request.user  # Người thực hiện follow
+                    #     )
         return redirect('user_profile', id=profile.id)
+
     context = {
         'profile': profile,
         'user_posts': user_posts,
-        'followers':followers,
-        'following':following,
-        'is_following':is_following,
+        'followers': followers,
+        'following': following,
+        'is_following': is_following,
     }
     return render(request, 'profile.html', context)
+
 
 @login_required
 def follower_detail(request,id):

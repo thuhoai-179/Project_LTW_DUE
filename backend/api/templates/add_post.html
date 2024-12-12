@@ -42,12 +42,14 @@
 <div class='container'>
     <h2>THÊM BÀI ĐĂNG</h2>
     <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{form.as_p}}
-            <div class='ct'>
-                <button type="submit" class="btn" style="background-color:rgb(193, 163, 98)">Tạo bài đăng</button>  
-                <button type="submit" class="btn" style="background-color:silver"><a href="{% url 'baiviet' %}" style='color:black'>Hủy</a></button>
-            </div>
+        {% csrf_token %}
+        {{ form.media }}
+        {{form.as_p}}
+        <div class='ct'>
+            <button type="submit" class="btn" style="background-color:rgb(193, 163, 98)">Tạo bài đăng</button>
+            <button type="submit" class="btn" style="background-color:silver"><a href="{% url 'baiviet' %}"
+                                                                                 style='color:black'>Hủy</a></button>
+        </div>
     </form>
 </div>
 {% endblock %}

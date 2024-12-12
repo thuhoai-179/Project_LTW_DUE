@@ -6,8 +6,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("api.urls"))
-    
+    path('', include("api.urls")),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, 

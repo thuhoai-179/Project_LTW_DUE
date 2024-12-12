@@ -155,9 +155,6 @@
                             <div style='height:50px'>
                                 <h5 class="card-title"><strong>{{ post.title }}</strong></h5>
                             </div>
-                            <div class=ct>
-                                <p class="card-text">{{ post.description|truncatewords:20 }}</p>
-                            </div>
                               <button style='background-color:black'><a href="{% url 'post_detail' post.id %}" style='color:white'>Xem Chi Tiết</a></button>
                                 <!-- Nút để xóa hoặc chỉnh sửa bài viết nếu cần -->
                               <button style='background-color:black'><a href="{% url 'edit_post' post.id %}" style='color:white'>Chỉnh Sửa</a></button>

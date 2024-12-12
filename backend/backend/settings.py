@@ -34,7 +34,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'jazzmin',
-    
+    'ckeditor',
+    'ckeditor_uploader',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -135,9 +136,14 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+CKEDITOR_UPLOAD_PATH = "uploads" #them file luu anh vao media
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+#full chuc nang
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': 'full'}
+# }
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
