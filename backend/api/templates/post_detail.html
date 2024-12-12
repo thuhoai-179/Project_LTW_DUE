@@ -224,6 +224,11 @@ h3{
     </div> {% endcomment %}
 
     <h2>{{ post.title }}</h2>
+    <div>
+        {% if post.image %}
+                <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}"style="transition: opacity 0.3s ease;width:200px; height:200px">
+            {% endif %}
+    </div>
     <div class='custome'>
         <p><strong> Nội Dung: </strong>{{ post.description }}
             <div class='toolbar' style='margin-top:200px;gap:10px'>

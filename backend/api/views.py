@@ -191,8 +191,8 @@ def post_detail(request, id):
 @login_required
 def edit_post(request,id):
     post = get_object_or_404(Post, id=id)  
-    # if post.user != request.user:
-    #     return HttpResponseForbidden("Bạn không có quyền chỉnh sửa bài viết này.")
+    if post.user != request.user:
+        return HttpResponseForbidden("Bạn không có quyền chỉnh sửa bài viết này.")
     if request.method == "POST":
         form = Edit_PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
